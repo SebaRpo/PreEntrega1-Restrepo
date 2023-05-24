@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,wght@1,600&family=Sevillana&family=Staatliches&display=swap');
+*{
+    padding: 0;
+    margin: 0 ;
+    box-sizing: border-box;
+    /* Establecemos la fuente de texto para todo el documento */
+    font-family: 'Playfair', serif;
+    font-family: 'Sevillana', cursive;
+    font-family: 'Staatliches', cursive;    
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    padding: 0 20px;
+    background-color: aqua;
+}
+nav a{
+    margin: 0 1rem;
+    text-decoration: none;
+    color: black;
+    
+}
+nav a:hover{
+    transform: translate3d(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    box-shadow: inset 100px 0 0 0 #54b3d6;
+}
+ul{
+    display: flex;
+    list-style: none;
+    
+}
+
+header .navBtn{
+    padding: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: none;  
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1024px){
+    header .navBtn{
+        display: flex;
+    }
+
+    header nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        transition: 0.5s;
+        transform: translate(-100vh);
+        text-decoration: 0;
+        background-color: aqua;
+    }
+
+    header .active{
+        transform: none;
+    }
+    nav .close-btn{
+        position: absolute;
+        top: 3.2rem;
+        right: 3.2rem;
+    }
+    
+}
