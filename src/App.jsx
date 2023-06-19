@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import NavBar from './components/NavBar/NavBar'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
+import Navbar from "./components/Navbar/Navbar"
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
-       <NavBar/>
-       <ItemListContainer greeting={'Bienvenidos a ReALTA'}/>
-
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting={'Listado de productos'}/>}/>
+          <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Listado de productos filtrados'}/>}/>
+          <Route path='/item/:itemId' element={<ItemDetailContainer />}/>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

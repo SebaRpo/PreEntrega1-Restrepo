@@ -1,44 +1,35 @@
-import './NavBar.css';
-import { useRef } from 'react'; // useRef es para manejar los elementos del DOM
-import {FaBars, FaTimes} from 'react-icons/fa';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import React from 'react';
 
-const NavBar  = () => {
-    const navRef = useRef();
-    const toggleNav = () => {
-        navRef.current.classList.toggle('active');
-    }
-    
-    const closeNav = () => {
-        navRef.current.classList.remove('active');
-    }
-    return (
-        // menú de navegación
-        <header>
+function NavBar() {
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">ReALTA</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/category/vestido_de_banio">Vestidos de baño</Nav.Link>
+            <Nav.Link href="/category/bodiesyalgomas">Bodies y algo más</Nav.Link>
             
-           <h3>ReALTA</h3>
-            <nav ref={navRef}>
-                
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Vestidos de Baño</a></li>
-                    <li><a href="">Bodies</a></li>
-                    <li><a href="">Accesorios</a></li>
-                    <CartWidget/>
-                </ul>
-                
-                <button onClick={closeNav} className="close-btn navBtn">
-                    <FaTimes/>
-                </button>
-            </nav>
-            <button onClick={toggleNav} className="navBtn">
-                <FaBars/>
-       
-            </button>
-        </header>
-    )
+          </Nav>
+          <Nav>
+            
+            <Nav.Link eventKey={2} href="#memes">
+              <CartWidget/>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
 export default NavBar;
